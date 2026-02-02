@@ -106,8 +106,8 @@ class Jogador:
                     print("Recupera 25% de Defesa.")
                     self.curar(25)
                 elif item == "Velocino dourado":
-                    print("Cura Lendaria! Recupera 100% da Defesa.")
-                    self.curar(100)
+                    print("Cura Lendaria! Recupera 50% da Defesa.")
+                    self.curar(50)
                 elif item == "Ambrosia":
                     print("Forca bruta! Empurrao +1 neste turno.")
                     self.furia_ativa = True
