@@ -55,52 +55,55 @@ def mostrar_itens():
     print(f"{Cores.VERMELHO}7. CAIXA DE PANDORA 📦{Cores.RESET}")
     print("   Azaração! O oponente jogará com –1 DADO no turno dele.")
 
-    print(f"\n{Cores.AMARELO}8. VELOCINO DOURADO ✨{Cores.RESET} Cura total (100%). Muito raro.")
+    print(f"\n{Cores.AMARELO}8. VELOCINO DOURADO ✨{Cores.RESET} Cura parcial(50%). Muito raro.")
 
     input(f"\n{Cores.VERDE}[Enter]{Cores.RESET}")
-    
+
 def mostrar_info_deuses():
-    """Mostra a lista de personagens jogáveis."""
+    """Mostra os deuses disponíveis na lista oficial."""
     limpar_tela()
-    print(f"{Cores.NEGRITO}=== 🏛️ PANTHEON (INFO DOS DEUSES) ==={Cores.RESET}\n")
-    print("Cada deus possui um Especial ativado com três dados 6.\n")
-    
+    print(f"{Cores.NEGRITO}=== 🏛️ PANTHEON DOS DEUSES ==={Cores.RESET}\n")
     for classe_deus in TODOS_OS_DEUSES:
         d = classe_deus()
         print(f"{Cores.AMARELO}{d.icone} {d.nome}:{Cores.RESET} {d.descricao}")
         print(f"{Cores.CIANO}{'-'*50}{Cores.RESET}")
-    
     input(f"\n{Cores.VERDE}[Pressione Enter para voltar]{Cores.RESET}")
 
 def menu_principal():
+    """Loop principal do menu."""
     while True:
         limpar_tela()
         print(f"{Cores.CIANO}=======================================")
         print(f"       ⚡ BATTLE OF OLYMPO ⚡")
         print(f"======================================={Cores.RESET}")
-        print("1.  ⚔️  JOGAR")
-        print("2.  📜  REGRAS (Leia antes de jogar!)")
-        print("3.  🎒  ENCICLOPEDIA DOS ITENS")
-        print("4. ️ 🏛  CONHECER OS DEUSES")
-        print("5.  ❌  SAIR")
+        print("1.  ⚔️  JOGAR (PvP)")
+        print("2.  🏆  TORNEIO (PvE)")
+        print("3.  📜  REGRAS (Leia antes de jogar!)")
+        print("4.  🎒  ENCICLOPEDIA DOS ITENS")
+        print("5. ️ 🏛  CONHECER OS DEUSES")
+        print("6.  ❌  SAIR")
         
-        escolha = input("\nEscolha uma opção: ")
+        escolha = input("\nEscolha uma opção: ").strip()
 
         if escolha == "1":
-            # Inicia o jogo
-            BattleOfOlympo().jogar()
-            input("\nPressione Enter para voltar ao menu...")
+            # Chama o modo clássico Jogador vs Jogador
+            BattleOfOlympo(modo="PvP").pvp_inicial()
             
         elif escolha == "2":
-            mostrar_regras()
+            # Chama o novo modo de progressão contra a IA
+            BattleOfOlympo(modo="Torneio").iniciar_torneio()
+            input(f"\n{Cores.VERDE}[Pressione Enter para voltar]{Cores.RESET}")
 
         elif escolha == "3":
+            mostrar_regras()
+
+        elif escolha == "4":
             mostrar_itens()
             
-        elif escolha == "4":
+        elif escolha == "5":
             mostrar_info_deuses()
             
-        elif escolha == "5":
+        elif escolha == "6":
             print("Saindo do Olimpo... Que os deuses te acompanhem!")
             break
         else:
