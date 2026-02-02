@@ -60,8 +60,8 @@ class Hera(DeusBase):
         super().__init__("Hera", "🦚", "Protecao: Cura muito (50%).")
     def ativar_especial(self, usuario, oponente):
         super().ativar_especial(usuario, oponente)
-        print("Hera cura seu campeao em 50%!")
-        usuario.curar(50)
+        print("Hera cura seu campeao em 40%!")
+        usuario.curar(40)
         return 0
 
 class Artemis(DeusBase):
